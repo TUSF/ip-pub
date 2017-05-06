@@ -30,6 +30,9 @@ Below is an example of a `publication object` sent over the `releases` topic. Co
       desc: "string",
         // (optional) A description of the publication. Preferrably NOT HTML.
       
+      filesize: 0,
+        // The size of the file in bytes.
+      
       time: 0,
         // A Unix timestamp to associate with this publication.
       
