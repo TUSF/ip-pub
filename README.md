@@ -21,15 +21,30 @@ Archivers should avoid recognizing publications sent from untrusted PeerIDs.
 Below is an example of a `publication object` sent over the `releases` topic. Comments are added to describe a parameter's use.
 
     {
-      name: "string", // The name of the publication, to be used as an identifying name.
-      cat: "string", // The category this publication falls into. Archivers may ignore unrecognized categories.
-      desc: "string", // (optional) A description of the publication. Preferrably NOT HTML.
-      time: 0, // A Unix timestamp to associate with this publication.
-      torrent: "string", // (optional) A BitTorrent hash associated with this publication.
-      trackers: ["string"], // (optional) BitTorrent trackers to associate with this publication.
-      ipfs: "string", // (optional) An IPFS hash to associate with this publication.
-      website: "string" // (optional) A website URL to associate with this publication.
-			//May be pubisher's website or the published content.
+      name: "string",
+        // The name of the publication, to be used as an identifying name.
+	
+      cat: "string",
+        // The category this publication falls into. Archivers may ignore unrecognized categories.
+      
+      desc: "string",
+        // (optional) A description of the publication. Preferrably NOT HTML.
+      
+      time: 0,
+        // A Unix timestamp to associate with this publication.
+      
+      torrent: "string",
+        // (optional) A BitTorrent hash associated with this publication.
+      
+      trackers: ["string"],
+        // (optional) BitTorrent trackers to associate with this publication.
+      
+      ipfs: "string",
+        // (optional) An IPFS hash to associate with this publication.
+      
+      website: "string"
+        // (optional) A website URL to associate with this publication.
+        //May be pubisher's website or the published content.
     }
 
 How Archivers will store this content is up to individual implementations.
@@ -45,11 +60,20 @@ any database. This system assumes that **Clients** will send their query over a 
 Below is an example of a `query object` send over the `search` topic. Comments are added to explain a parameter's use.
 
     {
-      query: "string", // (optional) A string representing a client's request.
-      cat: "string", // (optinal) The category in which the client wishes to search.
-      limit: 0, // (optional) The number of results to return.
-      page: 0, // (optional) The "page" to return.
-      room: "string" // The topic a Client will be waiting at.
+      query: "string",
+        // (optional) A string representing a client's request.
+      
+      cat: "string",
+        // (optinal) The category in which the client wishes to search.
+      
+      limit: 0,
+        // (optional) The number of results to return.
+      
+      page: 0,
+        // (optional) The "page" to return.
+      
+      room: "string"
+        // The topic a Client will be waiting at.
     }
 
 This requires more explanation. The `query` parameter should be interpretted as the Client searching for a publication by name.
@@ -73,16 +97,22 @@ results according to the query, they will publish these results over the specifi
 Comments are added to explain a parameter's use.
 
     {
-      client: "string", // The PeerID of the Client requesting this.
-      query: {}, // The original `query object` that this result is a response to.
-      results: [] // An array containing `publication object`s that fit the query.
+      client: "string",
+        // The PeerID of the Client requesting this.
+      
+      query: {},
+        // The original `query object` that this result is a response to.
+      
+      results: []
+        // An array containing `publication object`s that fit the query.
     }
 
 Once a Client recognizes the results they are to publish a confirmation message with the following format:
 
     {
       success: "ok",
-      query:{} // The original `query object` that this confirmation received.
+      query:{}
+        // The original `query object` that this confirmation received.
     }
 
 The `success` message lets the server know the client received their results. The inclusion of the **query** object once again
