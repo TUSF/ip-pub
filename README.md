@@ -1,4 +1,4 @@
-#InterPlanetary Publishing
+# InterPlanetary Publishing
 
 This specification describes a method to announce and publish media over the IPFS PubSub system, and an optional method for
 Clients to query this data. All interactions described within this spec occur over the PubSub system, on predetermined `topics`
@@ -9,7 +9,7 @@ users which request search queries, while **Servers** respond to these queries. 
 by IPFS and tied to a private key, which is sent over PubSub with every message. **IPNS** refers to IPFS's "Name Space" system
 that allos individual IPFS daemons to point publish unique hashes under their PeerID.
 
-##Publishing and Archiving
+## Publishing and Archiving
 
 Publishers should optimally publish to a single `topic` to make things easier on Archivers. For the purposes of this spec, that
 `topic` will be referred to as the `releases` topic. Archivers should be subscribed to the `releases` topic at all times,
@@ -35,7 +35,7 @@ Below is an example of a `publication object` sent over the `releases` topic. Co
 How Archivers will store this content is up to individual implementations.
 
 
-##Search and Results
+## Search and Results
 
 People should be able to download a record of publications, either through publishers directly, or through an archiver's open
 database. However this isn't always optimal, and it may be desirable for a Search Engine to exist that can return results from
@@ -82,7 +82,7 @@ Once a Client recognizes the results they are to publish a confirmation message 
 
     {
       success: "ok",
-      query:{}
+      query:{} // The original `query object` that this confirmation received.
     }
 
 The `success` message lets the server know the client received their results. The inclusion of the **query** object once again
