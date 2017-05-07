@@ -1,0 +1,5 @@
+{
+	categories: ["Test1", "Test2"],
+	topics: ["public-topic","back-up-topic","other-public-topic"],
+	database: "Publications.db"
+}
