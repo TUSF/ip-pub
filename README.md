@@ -28,7 +28,7 @@ Below is an example of a `publication object` sent over the `releases` topic. Co
         // The category this publication falls into. Archivers may ignore unrecognized categories.
       
       desc: "string",
-        // (optional) A description of the publication. Preferrably NOT HTML.
+        // (optional) A description of the publication.
       
       filesize: 0,
         // The size of the file in bytes.
