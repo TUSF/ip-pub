@@ -110,6 +110,9 @@ Comments are added to explain a parameter's use.
         // An array containing `publication object`s that fit the query.
     }
 
+It's important to note: Archivers should record the PeerID that submitted a publication. As such, the `publication`s within the
+`results` array should possess a `peer` parameter, which is a string containing the PeerID of the publisher.
+
 Once a Client recognizes the results they are to publish a confirmation message with the following format:
 
     {
