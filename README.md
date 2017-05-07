@@ -92,12 +92,13 @@ suggested values are between 10 and 50.
 
 Because Clients cannot be expected to listen to every search result sent over the `search` topic, the `room` parameter exists
 so that a Client can subscribe to a second topic, and wait for a response from the server. This second topic should be named as
-the original topic with a hyphen and the new name appended. If for example a Client prepared to send a query over the `search`
-topic, with the `room` parameter `foo`, they should first subscribe to the topic `search-foo` before sending their query.
+the original topic, the Client's PeerID, and the randomly generated string, all separated by hyphen. For example, if a Client
+prepared to send a query over the `search` topic, with the `room` parameter `foo`, they should first subscribe to the topic
+`search-<peerid>-foo` before sending their query.
 
-When the Server reads the Client's query in `search`, they will subscribe to the new topic `search-foo`, and after generating
-results according to the query, they will publish these results over the specified topic. Below is an example `result object`.
-Comments are added to explain a parameter's use.
+When the Server reads the Client's query in `search`, they will subscribe to the new topic `search-<peerid>-foo`, and after
+generating results according to the query, they will publish these results over the specified topic. Below is an example
+`result object`. Comments are added to explain a parameter's use.
 
     {
       client: "string",
